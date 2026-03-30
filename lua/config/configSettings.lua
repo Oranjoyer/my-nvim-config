@@ -7,6 +7,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { desc = 'Telescope git files'})
+vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols, { desc = 'Telescope workspace symbols'})
 -- Other
 require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
@@ -38,7 +39,7 @@ Hydra(
 
 	mode = "n",
 
-	body = "<leader>w",
+	body = "<c-w>",
 
 	hint = [["Window Control Mode"]],
 
@@ -61,7 +62,6 @@ Hydra(
 		headFunc('w'),
 		headFunc('q'),
 		headFunc('v'),
-		headFunc('s'),
 		{",","<cmd>wincmd <<CR>"},
 		{".","<cmd>wincmd ><CR>"},
 		{"=","<cmd>wincmd +<CR>"},
@@ -73,3 +73,5 @@ Hydra(
 -- Extra Binds
 vim.keymap.set('t','<ESC><ESC>',"<C-\\><C-N>")
 vim.keymap.set('n',"<leader>tt","<cmd>split | wincmd J | term<CR>")
+vim.opt.completeopt = {'menuone','noselect','popup'}
+vim.keymap.set('i','<leader><space>',vim.lsp.completion.get)

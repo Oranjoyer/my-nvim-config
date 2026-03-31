@@ -1,6 +1,10 @@
 return
 {
 	{
+		"nvim-lualine/lualine.nvim",
+		    dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
+	{
 		"hrsh7th/nvim-cmp"
 	},
 	{

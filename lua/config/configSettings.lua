@@ -33,45 +33,104 @@ local headFunc = function(char)
 	}
 end
 local Hydra = require('hydra')
-Hydra(
-	{
-	name="Window Utils",
-
-	mode = "n",
-
-	body = "<c-w>",
-
-	hint = [["Window Control Mode"]],
-
-	exit = false,
-
-	color = "yellow",
-
-	foreign_keys = 'warn',
-
-	buffer = nil,
-
-	invoke_on_body = true,
-
-	heads = {
-		headFunc("j"),
-		headFunc('k'),
-		headFunc('h'),
-		headFunc('l'),
-		headFunc('p'),
-		headFunc('w'),
-		headFunc('q'),
-		headFunc('v'),
-		{",","<cmd>wincmd <<CR>"},
-		{".","<cmd>wincmd ><CR>"},
-		{"=","<cmd>wincmd +<CR>"},
-		headFunc('-'),
-	}
-
-	}
-)
+-- Hydra(
+-- 	{
+-- 	name="Window Utils",
+--
+-- 	mode = "n",
+--
+-- 	body = "<c-w>",
+--
+-- 	hint = [["Window Control Mode"]],
+--
+-- 	exit = false,
+--
+-- 	color = "yellow",
+--
+-- 	foreign_keys = 'warn',
+--
+-- 	buffer = nil,
+--
+-- 	invoke_on_body = true,
+--
+-- 	heads = {
+-- 		headFunc("j"),
+-- 		headFunc('k'),
+-- 		headFunc('h'),
+-- 		headFunc('l'),
+-- 		headFunc('p'),
+-- 		headFunc('w'),
+-- 		headFunc('q'),
+-- 		headFunc('v'),
+-- 		{",","<cmd>wincmd <<CR>"},
+-- 		{".","<cmd>wincmd ><CR>"},
+-- 		{"=","<cmd>wincmd +<CR>"},
+-- 		headFunc('-'),
+-- 	}
+--
+-- 	}
+-- )
 -- Extra Binds
 vim.keymap.set('t','<ESC><ESC>',"<C-\\><C-N>")
 vim.keymap.set('n',"<leader>tt","<cmd>split | wincmd J | term<CR>")
+vim.keymap.set('n',"<leader>S","<cmd>split | Ex<CR>")
 vim.opt.completeopt = {'menuone','noselect','popup'}
-vim.keymap.set('i','<leader><space>',vim.lsp.completion.get)
+vim.lsp.completion.enable()
+vim.keymap.set('i','<C-l>',vim.lsp.completion.get)
+
+--lualine
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    always_show_tabline = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+      refresh_time = 16, -- ~60fps
+      events = {
+        'WinEnter',
+        'BufEnter',
+        'BufWritePost',
+        'SessionLoadPost',
+        'FileChangedShellPost',
+        'VimResized',
+        'Filetype',
+        'CursorMoved',
+        'CursorMovedI',
+        'ModeChanged',
+      },
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
+-- lsp

@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set('n',"<leader>mp",vim.cmd.Ex)
+vim.keymap.set('n',"<leader>ce",vim.diagnostic.open_float)
 
 require("config.lazy")
 require("config.configSettings")
@@ -16,4 +17,5 @@ vim.keymap.set('n',"<A-j>","jzz")
 vim.keymap.set('n',"<A-k>","kzz")
 
 vim.cmd.colorscheme "melange"
+
 

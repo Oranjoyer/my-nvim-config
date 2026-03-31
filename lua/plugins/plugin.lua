@@ -1,24 +1,21 @@
 return
 {
 	{
+		"akinsho/bufferline.nvim"
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		    dependencies = { 'nvim-tree/nvim-web-devicons' }
 	},
-	{
-		"hrsh7th/nvim-cmp"
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp-document-symbol"
-	},
-	{
-		"hrsh7th/cmp-calc"
-	},
-	{
-		"crazyhulk/cmp-sign"
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp"
-	},
+	{ 'neovim/nvim-lspconfig'},
+	{ 'hrsh7th/cmp-nvim-lsp'},
+	{ 'hrsh7th/cmp-buffer'},
+	{ 'hrsh7th/cmp-path'},
+	{ 'hrsh7th/cmp-cmdline'},
+	{ 'hrsh7th/nvim-cmp'},
+	{ 'hrsh7th/cmp-vsnip'},
+	{ 'hrsh7th/vim-vsnip'},
+
 	{
 		'brenoprata10/nvim-highlight-colors'
 	},

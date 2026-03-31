@@ -93,7 +93,7 @@ require('lualine').setup {
     ignore_focus = {},
     always_divide_middle = true,
     always_show_tabline = true,
-    globalstatus = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -130,8 +130,14 @@ require('lualine').setup {
     lualine_z = {}
   },
   tabline = {},
-  winbar = {},
-  inactive_winbar = {},
+  winbar = {
+	lualine_a = {'filename'},
+	-- lualine_x = {'location'},
+  },
+  inactive_winbar = {
+	lualine_c = {'filename'},
+	-- lualine_x = {'location'},
+  },
   extensions = {}
 }
 -- lsp
@@ -216,3 +222,10 @@ require('lualine').setup {
   vim.lsp.enable('lua_ls')
   -- BufferLine
   	require("bufferline").setup{}
+-- DAP
+	local dap = require("dap")
+	vim.keymap.set('n',"<leader>db",dap.toggle_breakpoint,{})
+	vim.keymap.set('n',"<leader>dc",dap.continue,{})
+	vim.keymap.set('n',"<leader>di",dap.step_into,{})
+	vim.keymap.set('n',"<leader>do",dap.step_over,{})
+	vim.keymap.set('n',"<leader>dr",dap.repl.open,{})

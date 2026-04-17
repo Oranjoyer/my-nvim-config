@@ -229,3 +229,9 @@ require('lualine').setup {
 	vim.keymap.set('n',"<leader>di",dap.step_into,{})
 	vim.keymap.set('n',"<leader>do",dap.step_over,{})
 	vim.keymap.set('n',"<leader>dr",dap.repl.open,{})
+-- Overseer
+	local osee = require("overseer")
+	osee.setup()
+	vim.keymap.set('n',"<leader>or","<cmd>OverseerRun<CR>")
+	vim.keymap.set('n',"<leader>ot","<cmd>OverseerToggle<CR>")
+	

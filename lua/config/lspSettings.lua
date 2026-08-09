@@ -4,6 +4,7 @@ require("mason-lspconfig").setup(
 		"lua_ls",
 		"pyright",
 		"neocmake",
+    "zls",
 	}
 	}
 )

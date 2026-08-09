@@ -9,6 +9,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { desc = 'Telescope git files'})
 vim.keymap.set('n', '<leader>fs', builtin.lsp_workspace_symbols, { desc = 'Telescope workspace symbols'})
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Telescope diagnostics'})
+vim.keymap.set('n', '<leader>fq',builtin.quickfix, { desc = 'Telescope quickfix'})
 -- Other
 require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
